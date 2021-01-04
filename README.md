@@ -1,4 +1,4 @@
-[![StyleCI](https://github.styleci.io/repos/326625658/shield?branch=master)](https://github.styleci.io/repos/145921620)
+[![StyleCI](https://github.styleci.io/repos/326625658/shield?branch=master)](https://github.styleci.io/repos/326625658)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/solumdesignum/package-env-loader/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/solumdesignum/package-env-loader/?branch=master)
 [![Total Downloads](https://poser.pugx.org/solumdesignum/package-env-loader/downloads)](https://packagist.org/packages/solumdesignum/package-env-loader)
 [![Latest Stable Version](https://poser.pugx.org/solumdesignum/package-env-loader/v/stable)](https://packagist.org/packages/solumdesignum/package-env-loader)

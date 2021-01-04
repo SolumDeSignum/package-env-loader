@@ -23,7 +23,7 @@ class ExampleIntegration implements PackageEnvLoaderContract
     }
 
     /**
-     * Example of configuration
+     * Example of configuration.
      *
      * @param string $path
      *
@@ -31,6 +31,6 @@ class ExampleIntegration implements PackageEnvLoaderContract
      */
     final public function packageEnvRootPath(string $path = '/..'): string
     {
-        return __DIR__ . $path;
+        return __DIR__.$path;
     }
 }

@@ -1,22 +1,28 @@
 {
     "name": "solumdesignum/package-env-loader",
-    "description": ":package_description",
-    "license": "license",
+    "description": "Framework agnostic environment loader that abstracts PHP dotEnv for faster env loading.",
+    "license": "MIT",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "Oskars Germovs",
+            "email": "oskars_germovs@inbox.lv",
+            "homepage": "https://solum-designum.eu"
         }
     ],
     "homepage": "https://github.com/solumdesignum/package-env-loader",
-    "keywords": ["Laravel", "PackageEnvLoader"],
+    "keywords": [
+        "packageEnvLoader",
+        "pacakge",
+        "loader",
+        "env",
+        "dotenv",
+        "environment"
+    ],
     "require": {
-        "illuminate/support": "~5|~6|~7"
+        "php": "^7.4|^8.0|^8.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "~9.0",
-        "orchestra/testbench": "~5|~6"
+        "vlucas/phpdotenv": "^v5.2"
     },
     "autoload": {
         "psr-4": {
@@ -26,19 +32,6 @@
     "autoload-dev": {
         "psr-4": {
             "SolumDeSignum\\PackageEnvLoader\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "SolumDeSignum\\PackageEnvLoader\\PackageEnvLoaderServiceProvider"
-            ],
-            "aliases": {
-                "PackageEnvLoader": "SolumDeSignum\\PackageEnvLoader\\Facades\\PackageEnvLoader"
-            },
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
         }
     }
 }

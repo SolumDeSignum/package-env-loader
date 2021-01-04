@@ -5,28 +5,24 @@ declare(strict_types=1);
 namespace SolumDeSignum\PackageEnvLoader\Traits;
 
 use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidFileException;
 
-/**
- * Trait PackageEnvLoader
- * @package SolumDeSignum\PackageEnvLoader\Traits
- */
 trait PackageEnvLoader
 {
     /**
-     * @return Dotenv
-     */
-    private function dotEnv(): Dotenv
-    {
-       return Dotenv::create($this->packageRootPath());
-    }
-
-    /**
-     * @param string $path
+     * @param string $environmentFile
      *
-     * @return string
+     * @return null[]|string|string[]
      */
-    final public function packageRootPath(string $path = '/..' ): string
+    final public function createPackageDotenv(string $environmentFile = '.env')
     {
-        return __DIR__ . $path;
+        try {
+            $response = Dotenv::create($this->packageEnvRootPath(), $environmentFile)
+                ->load();
+        } catch (InvalidFileException $e) {
+            $response = $e->getMessage();
+        }
+
+        return $response;
     }
 }

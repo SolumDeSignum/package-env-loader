@@ -6,8 +6,5 @@ namespace SolumDeSignum\PackageEnvLoader\Contracts;
 
 interface PackageEnvLoaderContract
 {
-    /**
-     * @return string
-     */
     public function packageEnvRootPath(): string;
 }

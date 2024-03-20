@@ -10,7 +10,7 @@ use Illuminate\Support\Env;
 
 trait PackageEnvLoader
 {
-    final public function createPackageDotenv(string $environmentFile = '.env'): mixed
+    public function createPackageDotenv(string $environmentFile = '.env'): mixed
     {
         try {
             $response = Dotenv::create(

@@ -9,10 +9,7 @@ class ExampleIntegration implements PackageEnvLoaderContract
 {
     use PackageEnvLoader;
 
-    /**
-     * @var array|null[]|string|string[]
-     */
-    private $packageEnv;
+    public mixed $packageEnv;
 
     /**
      * ExampleIntegration constructor.
@@ -29,7 +26,7 @@ class ExampleIntegration implements PackageEnvLoaderContract
      *
      * @return string
      */
-    final public function packageEnvRootPath(string $path = '/..'): string
+    public function packageEnvRootPath(string $path = '/..'): string
     {
         return __DIR__ . $path;
     }

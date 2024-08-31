@@ -16,18 +16,18 @@ class ExampleIntegration implements PackageEnvLoaderContract
      */
     public function __construct()
     {
-        $this->packageEnv = $this->createPackageDotenv('.env.dev');
+        $this->packageEnv = $this->createPackageDotenv(['.env.dev']);
     }
 
     /**
      * Example of configuration.
      *
-     * @param string $path
+     * @param array $paths
      *
-     * @return string
+     * @return string|array
      */
-    public function packageEnvRootPath(string $path = '/..'): string
+    public function packageEnvRootPath(array $paths = [__DIR__ . '/..']): string|array
     {
-        return __DIR__ . $path;
+        return $paths;
     }
 }

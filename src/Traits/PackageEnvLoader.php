@@ -6,23 +6,29 @@ namespace SolumDeSignum\PackageEnvLoader\Traits;
 
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidFileException;
-use Illuminate\Support\Env;
+use Illuminate\Support\Facades\Log;
 
 trait PackageEnvLoader
 {
-    public function createPackageDotenv(string $environmentFile = '.env'): mixed
+    public function createPackageDotenv(array $environmentFiles = ['.env']): bool
     {
-        try {
-            $response = Dotenv::create(
-                Env::getRepository(),
-                $this->packageEnvRootPath(),
-                $environmentFile
-            )
-                ->load();
-        } catch (InvalidFileException $e) {
-            $response = $e->getMessage();
+        $responseLoaded = true;
+
+        foreach ($environmentFiles as $file) {
+            try {
+                Dotenv::createImmutable(
+                    $this->packageEnvRootPath(),
+                    $file
+                )
+                    ->safeLoad();
+
+                Log::info("Loaded environment file: $file");
+            } catch (InvalidFileException $e) {
+                Log::error("Failed to load environment file $file: " . $e->getMessage());
+                $responseLoaded = false;
+            }
         }
 
-        return $response;
+        return $responseLoaded;
     }
 }

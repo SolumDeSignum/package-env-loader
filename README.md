@@ -37,30 +37,31 @@ class ExampleIntegration implements PackageEnvLoaderContract
     use PackageEnvLoader;
 
     /**
-    * @var array 
+     * @var bool 
      */
-    private array $packageEnv;
+    private bool $packageEnvLoaded;
 
     /**
-    * ExampleIntegration constructor.
+     * ExampleIntegration constructor.
      */
     public function __construct()
     {
-        $this->packageEnv = $this->createPackageDotenv('.env');
+        $this->packageEnvLoaded = $this->createPackageDotenv(['.env.first.test', '.env.second.test']);
     }
 
     /**
-     * Example of configuration
+     * Define the root path for environment files.
      *
-     * @param string $path
+     * @param array $paths
      *
-     * @return string
+     * @return array
      */
-    final public function packageEnvRootPath(string $path = '/..'): string
+    public function packageEnvRootPath(array $paths = [__DIR__ . '/..']): string|array
     {
-        return __DIR__ . $path;
+        return $paths;
     }
 }
+
 ````
 
 ## Contributing

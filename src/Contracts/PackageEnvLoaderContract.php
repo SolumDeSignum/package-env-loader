@@ -6,5 +6,5 @@ namespace SolumDeSignum\PackageEnvLoader\Contracts;
 
 interface PackageEnvLoaderContract
 {
-    public function packageEnvRootPath(): string;
+    public function packageEnvRootPath(array $paths): string|array;
 }

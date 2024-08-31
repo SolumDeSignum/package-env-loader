@@ -44,6 +44,13 @@
             "dev-dev": "1.x-dev"
         }
     },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "phpunit --coverage-html coverage"

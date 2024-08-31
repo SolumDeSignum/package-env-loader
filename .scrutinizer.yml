@@ -1,0 +1,20 @@
+build:
+  environment:
+    php:
+      version: 8.1 # Default PHP version
+  nodes:
+    node_8.1:
+      php:
+        version: 8.1
+    node_8.2:
+      php:
+        version: 8.2
+    node_8.3:
+      php:
+        version: 8.3
+    node_8.4:
+      php:
+        version: 8.4
+  tests:
+    override:
+      - command: phpunit

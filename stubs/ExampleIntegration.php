@@ -9,7 +9,7 @@ class ExampleIntegration implements PackageEnvLoaderContract
 {
     use PackageEnvLoader;
 
-    public mixed $packageEnv;
+    private bool $packageEnv;
 
     /**
      * ExampleIntegration constructor.

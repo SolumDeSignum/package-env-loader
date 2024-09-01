@@ -7,28 +7,44 @@ namespace SolumDeSignum\PackageEnvLoader\Traits;
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidFileException;
 use Illuminate\Support\Facades\Log;
+use LogicException;
+use SolumDeSignum\PackageEnvLoader\Contracts\PackageEnvLoaderContract;
 
 trait PackageEnvLoader
 {
-    public function createPackageDotenv(array $environmentFiles = ['.env']): bool
+    public function createPackageDotenv(array $environmentFiles = ['.env']): array
     {
-        $responseLoaded = true;
+        if (!($this instanceof PackageEnvLoaderContract)) {
+            throw new LogicException(
+                'Class must implement PackageEnvLoaderContract to use method createPackageDotenv.'
+            );
+        }
 
-        foreach ($environmentFiles as $file) {
+        $responsePackage = [];
+
+        foreach ($environmentFiles as $environmentFile) {
             try {
-                Dotenv::createImmutable(
+                $response = Dotenv::createImmutable(
                     $this->packageEnvRootPath(),
-                    $file
-                )
-                    ->safeLoad();
+                    $environmentFile
+                )->safeLoad();
 
-                Log::info("Loaded environment file: $file");
+                Log::info("Loaded environment file: $environmentFile");
             } catch (InvalidFileException $e) {
-                Log::error("Failed to load environment file $file: " . $e->getMessage());
-                $responseLoaded = false;
+                Log::error("Failed to load environment file $environmentFile: " . $e->getMessage());
+                $response = false;
+            }
+
+            $responsePackage[] = $response;
+        }
+
+        $flattenedResponses = [];
+        foreach ($responsePackage as $response) {
+            if (is_array($response)) {
+                $flattenedResponses = array_merge($flattenedResponses, $response);
             }
         }
 
-        return $responseLoaded;
+        return $flattenedResponses;
     }
 }

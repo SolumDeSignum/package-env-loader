@@ -39,7 +39,7 @@ class ExampleIntegration implements PackageEnvLoaderContract
     /**
      * @var bool 
      */
-    private bool $packageEnvLoaded;
+    private array $packageEnvLoaded;
 
     /**
      * ExampleIntegration constructor.
